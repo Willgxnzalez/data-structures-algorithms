@@ -1,5 +1,7 @@
 #include <iostream>
 
+// This function rearranges the elements of an integer array so that all even numbers come before all odd numbers.
+
 int * evenOdd(int *arr, int len) {
     int left = 0;
     int right = len - 1;

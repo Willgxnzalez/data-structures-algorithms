@@ -9,13 +9,14 @@ public:
     Node(int _data) : data(_data), next(nullptr) {}
     Node(int _data, Node *_next) : data(_data), next(_next) {}
 
+    // All nodes share the same static print & delete method
     static void print(Node *L) {
         for (Node *p=L; p; p=p->next)
             std::cout << p->data << " ";
         std::cout << std::endl;
     }
 
-    static void deleteList(Node *L) { /// All nodes share the same static delete method
+    static void deleteList(Node *L) {
         for (Node *p=L; p!=nullptr;) {
             Node *tmp = p;
             p = p->next;
@@ -28,13 +29,13 @@ Node * mergeTwoSortedLists(Node *L1, Node *L2) {
     if (!L1) return L2;
     if (!L2) return L1;
 
-    Node * head = L1;
+    Node *head = L1;
     if (L1->data > L2->data) {
         head = L2;
         L2 = L2->next;
-    } else
+    } else {
         L1 = L1->next;
-        
+    }
     Node *curr = head;
     while (L1 && L2) {
         if (L1->data > L2->data) {
